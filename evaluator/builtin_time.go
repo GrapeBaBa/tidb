@@ -160,7 +160,7 @@ func convertDateFormat(arg types.Datum, b byte) (types.Datum, error) {
 		}
 	case 'H', 'k':
 		d, err = builtinHour([]types.Datum{arg}, nil)
-		if err == nil && d.IsNull() {
+		if err == nil && !d.IsNull() {
 			d.SetString(fmt.Sprintf("%02d", d.GetInt64()))
 		}
 	case 'h', 'I', 'l':
